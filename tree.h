@@ -15,5 +15,11 @@ namespace tree {
 	public:
 		BinaryTree();
 		~BinaryTree();
+		Node* getRoot();
+		void insert(int value);
+		// Deep First Search (DFS)
+		void inOrder(Node* root);
+		void postOrder(Node* root);
+		void preOrder(Node* root);
 	};
 }

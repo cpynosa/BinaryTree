@@ -1,4 +1,28 @@
 #include "tree.h"
+//#include "utils.h"
+#include <format>
+#include <iostream>
+void tree::BinaryTree::inOrder(Node* root) {
+	if (root != nullptr) {
+		inOrder(root->left);
+		std::cout << root->value << "" << std::endl;
+		inOrder(root->right);
+	}
+}
+void tree::BinaryTree::postOrder(Node* root) {
+	if (root != nullptr) {
+		inOrder(root->left);
+		inOrder(root->right);
+		std::cout << root->value << "" << std::endl;
+	}
+}
+void tree::BinaryTree::preOrder(Node* root) {
+	if (root != nullptr) {
+		std::cout << root->value << "" << std::endl;
+		inOrder(root->left);
+		inOrder(root->right);
+	}
+}
 tree::Node::Node(int value) {
 	this->value = value;
 	this->left = nullptr;
@@ -26,4 +50,10 @@ void tree::BinaryTree::deleteTree(Node* node) {
 	deleteTree(node->left);
 	deleteTree(node->right);
 	delete node;
+}
+void tree::BinaryTree::insert(int value) {
+	root = insertNode(root, value);
+}
+tree::Node* tree::BinaryTree::getRoot() {
+	return this->root;
 }
