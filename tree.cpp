@@ -11,16 +11,16 @@ void tree::BinaryTree::inOrder(Node* root) {
 }
 void tree::BinaryTree::postOrder(Node* root) {
 	if (root != nullptr) {
-		inOrder(root->left);
-		inOrder(root->right);
+		postOrder(root->left);
+		postOrder(root->right);
 		std::cout << root->value << "" << std::endl;
 	}
 }
 void tree::BinaryTree::preOrder(Node* root) {
 	if (root != nullptr) {
 		std::cout << root->value << "" << std::endl;
-		inOrder(root->left);
-		inOrder(root->right);
+		preOrder(root->left);
+		preOrder(root->right);
 	}
 }
 tree::Node::Node(int value) {

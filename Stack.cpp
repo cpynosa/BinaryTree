@@ -1,13 +1,19 @@
 #include "Stack.h"
+#include <iostream>
 void Stack::pushNode(tree::Node* node) {
 	Stack::nodeStack.push(node);
 }
 void Stack::iterativeInorder(tree::Node* node) {
-	if (node == nullptr)return;
 	tree::Node* currentNode = node;
-	 do{
-		pushNode(currentNode->left);
-		currentNode = currentNode->left;
-	}while (currentNode->left != nullptr);
+	while (currentNode != nullptr || !nodeStack.empty()) {
+		while (currentNode != nullptr) {
+			pushNode(currentNode);
+			currentNode = currentNode->left;
+		}
+		currentNode = nodeStack.top();
+		nodeStack.pop();
+		std::cout << currentNode->value << " ";
+		currentNode = currentNode->right;
 
+	}
 }

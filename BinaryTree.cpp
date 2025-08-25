@@ -16,13 +16,6 @@ int main()
     bt.insert(7);
     Stack s;
     s.iterativeInorder(bt.getRoot());
-    while (!s.nodeStack.empty()) {
-        // Imprime el elemento superior de la pila
-        std::cout << s.nodeStack.top()->value << " ";
-        // Elimina el elemento superior de la pila
-        s.nodeStack.pop();
-    }
-    std::cout << std::endl;
     //bt.preOrder(bt.getRoot());
     // Convertir las 3 funciones de recursivas 
     // a iterativas
