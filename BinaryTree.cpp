@@ -15,7 +15,15 @@ int main()
     bt.insert(10);
     bt.insert(7);
     Stack s;
-    s.iterativeInorder(bt.getRoot());
+    //bt.inOrder(bt.getRoot());
+    //bt.preOrder(bt.getRoot());
+   //std::cout << std::endl;
+    bt.postOrder(bt.getRoot());
+    std::cout << std::endl;
+    //s.iterativeInorder(bt.getRoot());
+    s.iterativePostorder(bt.getRoot());
+    //s.iterativePreorder(bt.getRoot());
+
     //bt.preOrder(bt.getRoot());
     // Convertir las 3 funciones de recursivas 
     // a iterativas

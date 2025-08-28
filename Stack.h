@@ -4,10 +4,12 @@
 class Stack
 {
 private:
+	std::stack<tree::Node*> nodeStack;
 public:
 	void pushNode(tree::Node* node);
 	void iterativeInorder(tree::Node* node);
-	std::stack<tree::Node*> nodeStack;
+	void iterativePostorder(tree::Node* node);
+	void iterativePreorder(tree::Node* node);
 
 };
 

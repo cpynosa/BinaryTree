@@ -5,8 +5,8 @@ void Stack::pushNode(tree::Node* node) {
 }
 void Stack::iterativeInorder(tree::Node* node) {
 	tree::Node* currentNode = node;
-	while (currentNode != nullptr || !nodeStack.empty()) {
-		while (currentNode != nullptr) {
+	while (currentNode || !nodeStack.empty()) {
+		while (currentNode) {
 			pushNode(currentNode);
 			currentNode = currentNode->left;
 		}
@@ -15,5 +15,31 @@ void Stack::iterativeInorder(tree::Node* node) {
 		std::cout << currentNode->value << " ";
 		currentNode = currentNode->right;
 
+	}
+}
+void Stack::iterativePreorder(tree::Node* node) {
+	tree::Node* currentNode = node;
+	pushNode(currentNode);
+	while (!nodeStack.empty()) {
+		currentNode = nodeStack.top();
+		nodeStack.pop();
+		std::cout << currentNode->value << " ";
+		if (currentNode->right)pushNode(currentNode->right);
+		if (currentNode->left)pushNode(currentNode->left);
+	}
+
+}
+void Stack::iterativePostorder(tree::Node* node) {
+	tree::Node* currentNode = node;
+	pushNode(currentNode);
+	while (currentNode) {
+		if (currentNode->right)pushNode(currentNode->right);
+		if (currentNode->left)pushNode(currentNode->left);
+		currentNode = currentNode->left;
+	}
+	while (!nodeStack.empty()) {
+		currentNode = nodeStack.top();
+		nodeStack.pop();
+		std::cout << currentNode->value << " ";
 	}
 }
