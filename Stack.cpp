@@ -30,16 +30,22 @@ void Stack::iterativePreorder(tree::Node* node) {
 
 }
 void Stack::iterativePostorder(tree::Node* node) {
-	tree::Node* currentNode = node;
-	pushNode(currentNode);
-	while (currentNode) {
-		if (currentNode->right)pushNode(currentNode->right);
-		if (currentNode->left)pushNode(currentNode->left);
-		currentNode = currentNode->left;
+	if (!node) return;
+
+	std::stack<tree::Node*> stack1, stack2;
+	stack1.push(node);
+
+	while (!stack1.empty()) {
+		tree::Node* current = stack1.top();
+		stack1.pop();
+		stack2.push(current);
+
+		if (current->left) stack1.push(current->left);
+		if (current->right) stack1.push(current->right);
 	}
-	while (!nodeStack.empty()) {
-		currentNode = nodeStack.top();
-		nodeStack.pop();
-		std::cout << currentNode->value << " ";
+
+	while (!stack2.empty()) {
+		std::cout << stack2.top()->value << " ";
+		stack2.pop();
 	}
 }
